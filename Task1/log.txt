@@ -1,0 +1,35 @@
+commit 1a5e3708bbf259600792c863c6e9e2a14e590a03
+Merge: 88ea42d ec9701a
+Author: BorSerAl <98755440+BorSerAl@users.noreply.github.com>
+Date:   Thu Feb 17 01:25:39 2022 +0700
+
+    Merge pull request #2 from BorSerAl/dev
+    
+    Dev
+
+commit ec9701a3c1e746e474613d70930f35c4ee09e997
+Merge: 07bb3f4 6ee1354
+Author: BorSerAl <98755440+BorSerAl@users.noreply.github.com>
+Date:   Thu Feb 17 01:25:22 2022 +0700
+
+    Merge pull request #1 from BorSerAl/Serbor-new_feature
+    
+    branch %USERNAME-new_feature + .gitignore
+
+commit 6ee1354c7f520ae9922221ce9301aaf790fe1161
+Author: SerBo <SerBo@example.com>
+Date:   Thu Feb 17 01:24:38 2022 +0700
+
+    branch %USERNAME-new_feature + .gitignore
+
+commit 07bb3f4ffacbd8027dfa6f210293f9d19327ca2c
+Author: SerBo <SerBo@example.com>
+Date:   Thu Feb 17 01:23:27 2022 +0700
+
+    Create and push any test file
+
+commit 88ea42d37f98ced97a3e7f5588466c64a6fa085a
+Author: SerBo <SerBo@example.com>
+Date:   Thu Feb 17 01:22:23 2022 +0700
+
+    Create and push ./Task1/README.md
