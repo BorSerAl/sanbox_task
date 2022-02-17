@@ -41,16 +41,12 @@ jobs:
     # Run  after the First job is finished.
     needs: [Job1_extra1]
     env:      
-      MONTH                  : "March"
       DAY_OF_THE_MONTH       : 1
-      YEAR                   : 2222
-      
+      MONTH                  : "March"
+      YEAR                   : 2022
+      FAVORITE_DAY_OF_WEEK : "Friday"
     steps: 
-      - name: Print My favorite day of week
-        env:
-         FAVORITE_DAY_OF_WEEK : "Friday"
-        run: echo "My favorite day of week is $FAVORITE_DAY_OF_WEEK"
-           
+                 
       - name  : Step 1 Print the system date and time
         run   : date
       - name  : Step 2 Print variable’s content 
@@ -58,6 +54,6 @@ jobs:
                 echo "Day - ${{ env.DAY_OF_THE_MONTH }}
                 Month - ${{ env.MONTH }}
                 Year - ${{ env.YEAR }}
-                it's a very secret day"
+                
       - name  : Step 3 Print favorite day
         run   : echo "My favorite day of week is  = ${{secrets.FAVORITE_DAY_OF_WEEK}}"
