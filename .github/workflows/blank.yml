@@ -53,7 +53,7 @@ jobs:
         run   : |
                 echo "Day - ${{ env.DAY_OF_THE_MONTH }}
                 Month - ${{ env.MONTH }}
-                Year - ${{ env.YEAR }}
+                Year - ${{ env.YEAR }}"
                 
       - name  : Step 3 Print favorite day
         run   : echo "My favorite day of week is  = ${{secrets.FAVORITE_DAY_OF_WEEK}}"
