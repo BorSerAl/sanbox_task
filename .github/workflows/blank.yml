@@ -1,0 +1,59 @@
+# Task1 Extra
+
+name: Task1_Extra
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+   # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+  
+# This variables can be called from any step of any job
+env: 
+   DEPLOY_VER: ${{ github.sha }}
+   
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  Job1_extra1:
+    # The type of runner that the job will run on
+    runs-on  : ubuntu-latest
+    
+    defaults :
+       run   :
+         working-directory: Task1
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository, so your job can access it
+      - uses : actions/checkout@v1
+      - name : Step 1 Print the list of files/directories in github repository 
+        run  : ls
+      - name : Step 2 Print content of your log.txt file.        
+        run  : cat log.txt
+      - name : Step 3 Print hello          
+        run  : echo "Hello from ${{ env.DEPLOY_VER }} commit"
+        
+          
+  Job2_extra1:
+  
+    runs-on: ubuntu-latest
+    # Run  after the First job is finished.
+    needs: [Job1_extra1]
+    env:      
+      DAY_OF_THE_MONTH       : 1
+      MONTH                  : "March"
+      YEAR                   : 2022
+      FAVORITE_DAY_OF_WEEK : "Friday"
+    steps: 
+                 
+      - name  : Step 1 Print the system date and time
+        run   : date
+      - name  : Step 2 Print variable’s content 
+        run   : |
+                echo "Day - ${{ env.DAY_OF_THE_MONTH }}
+                Month - ${{ env.MONTH }}
+                Year - ${{ env.YEAR }}"
+                
+      - name  : Step 3 Print favorite day
+        run   : echo "My favorite day of week is  = ${{secrets.FAVORITE_DAY_OF_WEEK}}"
