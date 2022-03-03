@@ -1,0 +1,10 @@
+curl http://localhost:port
+docker run -dit --name myapp -p 8010:80 tag
+docker system prune -a
+docker ps -a
+docker stop container id
+docker rm container id
+docker pull 
+docker run -d -p 
+docker exec -it tag bin/bash
+
