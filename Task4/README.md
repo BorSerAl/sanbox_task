@@ -93,7 +93,7 @@
     		with:
       		  file: Dockerfile
       		  push: true
-                  tags: serbor/task:latest
+		  tags: serbor/task:latest
 
 ###	5.  Create docker-compose file. Deploy a few docker containers via one docker-compose file.
 ###   	first image - your docker image from the previous step. 5 nodes of the first image should be run;
@@ -129,9 +129,9 @@
 
 #	.env
 	TASK3_IMAGE=524e4e6fc5e9
-    	TASK3_IMAGE_PORTS=8050-8054:80
-    	JAVA_APP=2f765403878f
-    	DB_IMAGE=postgres
-    	pg_DB=MYDB
-    	PG_USER=user
-    	PG_PASS=POSTGRES_PASSWORD
+	TASK3_IMAGE_PORTS=8050-8054:80
+	JAVA_APP=2f765403878f
+	DB_IMAGE=postgres
+	pg_DB=MYDB
+	PG_USER=user
+	PG_PASS=POSTGRES_PASSWORD
