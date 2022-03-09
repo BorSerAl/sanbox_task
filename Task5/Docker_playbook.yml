@@ -1,0 +1,38 @@
+---
+- name: Install Docker
+  hosts: all
+  become: yes
+
+  tasks:
+    - name: Install aptitude using apt
+      apt: name=aptitude state=latest update_cache=yes force_apt_get=yes
+
+    - name: Install the required system packages
+      apt: name={{ item }} state=latest update_cache=yes
+      loop: [ 'apt-transport-https', 'ca-certificates', 'curl', 'software-properties-common', 'python3-pip', 'virtualenv', 'python3-setuptools']
+
+    - name: Install the Docker GPG APT key
+      apt_key:
+        url: https://download.docker.com/linux/ubuntu/gpg
+
+    - name: Add Docker Repository
+      apt_repository:
+        repo: deb https://download.docker.com/linux/ubuntu focal stable
+
+    - name: Install Docker
+      apt: update_cache=yes name=docker-ce state=latest
+
+    - name: Install the Python Docker module
+      pip:
+        name: docker
+
+    - name: Pull Docker image
+      docker_image:
+        name: hello-world
+        source: pull
+
+    - name: Create container
+      docker_container:
+        name: hello-world
+        image: hello-world
+        state: started
