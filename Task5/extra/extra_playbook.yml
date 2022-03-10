@@ -1,0 +1,39 @@
+---
+- name: install wordpress
+  hosts: all
+  become: yes
+  vars_files:
+   - vars/vars.yaml
+  vars:
+    db_volume: mariadb
+    wordpress: wordpress
+
+  tasks:
+    - name: Deploy MariaDB
+      docker_container:
+        image: mariadb
+        name: mariadb
+        volumes:
+          - "{{db_volume}}:/var/lib/mysql"
+        env:
+          MYSQL_ROOT_PASSWORD: "{{ MYSQL_ROOT_PASSWORD }}"
+          MYSQL_PASSWORD: "{{ MYSQL_PASSWORD }}"
+          MYSQL_DATABASE: "{{ MYSQL_DATABASE }}"
+          MYSQL_USER: "{{ MYSQL_USER }}"
+
+    - name: Deploy WordPress
+      docker_container:
+        image: wordpress
+        name: wordpress
+        restart_policy: always
+        ports:
+            - "8080:80"
+        links:
+            - "{{db_volume}}:/var/lib/mysql"
+        volumes:
+            - "{{wordpress}}:/var/www/html"
+        env:
+          MYSQL_PASSWORD: "{{ MYSQL_PASSWORD }}"
+          MYSQL_DATABASE: "{{ MYSQL_DATABASE }}"
+          MYSQL_USER: "{{ MYSQL_USER }}"
+          MYSQL_HOST: "{{ MYSQL_HOST }}"
